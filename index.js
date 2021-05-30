@@ -43,10 +43,10 @@ app.get('/pokedex',
     }
 );
 // arrumando os indeces do arry para facilitar interface para o usuario
-app.get('/pokedex/:id',
+app.get('/pokedex/:id/:n',
     function(req, res){
         const id = req.params.id - 1;
-        const pokedex = pokedex[id];
+        const pokedex = pokedex[id][req.params.nn];
 
         if (!pokedex){
             res.send("Mensagem não encontrada");
