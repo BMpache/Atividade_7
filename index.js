@@ -21,7 +21,7 @@ app.get('/hello',
 function (req, res){    
     res.send("Hello de Novo");
     }
-)
+);
 
 const Bulbasaur = '{ "name":"Bulbasaur", "type":"Grass/Poison", "about":"There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger." }';
 const Ivysaur = '{ "name":"Ivysaur", "type":"Grass/Poison", "about":"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs." }';
@@ -54,7 +54,7 @@ app.get('/pokedex/:id',
             res.send(pokedex);
         }
     }
-)
+);
 // usando o verbo post
 app.post('/pokedex', 
     (req, res) => {
@@ -73,7 +73,7 @@ app.put('/pokedex/:id',
         pokedex[id] = pokedex;        
         res.send("Mensagem atualizada com sucesso.")
     }
-)
+);
 
 app.delete('/pokedex/:id', 
     (req, res) => {
