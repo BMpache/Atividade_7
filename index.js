@@ -31,7 +31,7 @@ app.get('/pokedex',
 );
 app.get('/pokedex/:id', function(req, res){
     let id=req.params.id-1;
-    res.send(pokedex[id][req.params.nn]);
+    res.send(pokedex[id]);
 })
 
 // arrumando os indeces do arry para facilitar interface para o usuario
