@@ -14,12 +14,25 @@ app.listen(process.env.PORT || 3000);
 // array simulando um banco de dados
 const Bulbasaur = '{ "name":"Bulbasaur", "type":"Grass/Poison", "about":"There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger." }';
 const Ivysaur = '{ "name":"Ivysaur", "type":"Grass/Poison", "about":"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs." }';
-const Venusaur = '{ "name":"Venusaur", "type":"GrassPoison", "about":"Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight." }';
+const Venusaur = '{ "name":"Venusaur", "type":"Grass/Poison", "about":"Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight." }';
+const Charmander = '{ "name":"Charmander", "type":"Fire", "about":"It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail." }';
+const Charmeleon = '{ "name":"Charmeleon", "type":"Fire", "about":"It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws." }';
+const Charizard  = '{ "name":"Charizard ", "type":"Fire/Flying", "about":"It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames." }';
+const Squirtle = '{ "name":"Squirtle", "type":"Water", "about":"When it retracts its long neck into its shell, it squirts out water with vigorous force." }';
+const Wartortle = '{ "name":"Wartortle", "type":"Water", "about":"It is recognized as a symbol of longevity. If its shell has algae on it, that Wartortle is very old." }';
+const Blastoise  = '{ "name":"Blastoise ", "type":"Water", "about":"It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell." }';
+
 
 // array simulando um banco de dados
 const pokedex = [ JSON.parse(Bulbasaur), 
                   JSON.parse(Ivysaur),
-                  JSON.parse(Venusaur)
+                  JSON.parse(Venusaur),
+                  JSON.parse(Charmander),
+                  JSON.parse(Charmeleon),
+                  JSON.parse(Charizard),
+                  JSON.parse(Squirtle),
+                  JSON.parse(Wartortle),
+                  JSON.parse(Blastoise)
 ];
 
 // novo endpoint
@@ -54,7 +67,7 @@ app.post('/pokedex',
         const pokedexs = req.body.pokedexs;
         pokedex.push(pokedexs); // vai colocar a nova mensgem no banco de dados, quando atualizar o localhost vai aparecer
                                  // a mensagem adicionada ao banco de dados, no caso um array
-        res.send("criar uma mensagem.")
+        res.send("Pokemon adicionado")
     }
 );
 // trocar algo antigo por algo novo
