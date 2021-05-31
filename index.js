@@ -42,7 +42,6 @@ app.get('/',
     }
 );
 
-
 // novo endpoint com o banco de dados
 app.get('/pokedex',
     function(req, res){
@@ -50,10 +49,6 @@ app.get('/pokedex',
                                              //null, que são lidos como boleanos
     }
 );
-app.get('/pokedex/:id', function(req, res){
-    let id=req.params.id-1;
-    res.send(pokedex[id]);
-})
 
 // arrumando os indeces do arry para facilitar interface para o usuario
 app.get('/pokedex/:id',
