@@ -11,7 +11,7 @@ app.use(cors());
 app.listen(process.env.PORT || 3000);
 
 
-// array simulando um banco de dados
+// strings para o banco de dados
 const Bulbasaur = '{ "name":"Bulbasaur", "type":"Grass/Poison", "about":"There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger." }';
 const Ivysaur = '{ "name":"Ivysaur", "type":"Grass/Poison", "about":"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs." }';
 const Venusaur = '{ "name":"Venusaur", "type":"Grass/Poison", "about":"Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight." }';
@@ -23,7 +23,7 @@ const Wartortle = '{ "name":"Wartortle", "type":"Water", "about":"It is recogniz
 const Blastoise  = '{ "name":"Blastoise ", "type":"Water", "about":"It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell." }';
 
 
-// array simulando um banco de dados
+// array simulando um banco de dados, com objetos Json
 const pokedex = [ JSON.parse(Bulbasaur), 
                   JSON.parse(Ivysaur),
                   JSON.parse(Venusaur),
@@ -35,7 +35,15 @@ const pokedex = [ JSON.parse(Bulbasaur),
                   JSON.parse(Blastoise)
 ];
 
-// novo endpoint
+// novo endpoint com uma explicação inicial
+app.get('/',
+    function(req, res){
+        res.send("Olá esse é o Backend do Bruno Miguel e da Maria Eduarda, fizemos um banco de dados baseado em Pokemon.\n Nosso banco de dados é um Pokedex com os nove primeiros Pokemons da Região de Kanto."); 
+    }
+);
+
+
+// novo endpoint com o banco de dados
 app.get('/pokedex',
     function(req, res){
         res.send(pokedex.filter(Boolean)); //isso é pra tratar os valores q aparecem como
@@ -54,7 +62,7 @@ app.get('/pokedex/:id',
         const pokedexs = pokedex[id];
 
         if (!pokedexs){
-            res.send("Pokemon não encontrada");
+            res.send("Pokemon não encontrado");
         } else {
             res.send(pokedexs);
         }
@@ -76,7 +84,7 @@ app.put('/pokedex/:id',
         const id = req.params.id - 1;
         const pokedexs = req.body.pokedexs;
         pokedex[id] = pokedexs;        
-        res.send("Pokemon atualizada com sucesso.")
+        res.send("Pokemon atualizado com sucesso.")
     }
 )
 
@@ -85,6 +93,6 @@ app.delete('/pokedex/:id',
         const id = req.params.id - 1;
         delete pokedex[id];
 
-        res.send("Pokemon removida com sucesso");
+        res.send("Pokemon removido com sucesso");
     }
 );
