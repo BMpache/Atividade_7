@@ -38,7 +38,7 @@ const pokedex = [ JSON.parse(Bulbasaur),
 // novo endpoint com uma explicação inicial
 app.get('/',
     function(req, res){
-        res.send("Olá esse é o Backend do Bruno Miguel e da Maria Eduarda, fizemos um banco de dados baseado em Pokemon.\n Nosso banco de dados é um Pokedex com os nove primeiros Pokemons da Região de Kanto."); 
+        res.send("Olá esse é o Backend do Bruno Miguel e da Maria Eduarda, fizemos um banco de dados baseado em Pokemon. Nosso banco de dados é um Pokedex com os nove primeiros Pokemons da Região de Kanto."); 
     }
 );
 
