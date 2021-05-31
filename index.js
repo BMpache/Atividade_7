@@ -23,7 +23,7 @@ const Wartortle = '{ "name":"Wartortle", "type":"Water", "about":"It is recogniz
 const Blastoise  = '{ "name":"Blastoise ", "type":"Water", "about":"It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell." }';
 
 
-// array simulando um banco de dados, com objetos Json
+// array simulando um banco de dados, com os objetos Json
 const pokedex = [ JSON.parse(Bulbasaur), 
                   JSON.parse(Ivysaur),
                   JSON.parse(Venusaur),
