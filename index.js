@@ -46,7 +46,7 @@ app.get('/',
 app.get('/pokedex',
     function(req, res){
         res.send(pokedex.filter(Boolean)); //isso é pra tratar os valores q aparecem como
-                                             //null, que são lidos como boleanos
+                                             //null, que são lidos como boleano
     }
 );
 
