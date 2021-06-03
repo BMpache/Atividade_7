@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 app.use(express.json()); //isso para garantir o tratamento do json
 
-// Permissões, senão colocar pode ser que não 
+// Permissões, senão colocar pode ser que NÂO
 // funcione com o cliente
 var cors = require('cors');
 app.use(cors());
