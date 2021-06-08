@@ -8,7 +8,7 @@ var cors = require('cors');
 app.use(cors());
 
 // Porta que eu estou ouvindo, o primeiro  pro heroku e o segundo é pra usar no PC
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.mongodb || 3000);
 
 
 // strings para o banco de dados
