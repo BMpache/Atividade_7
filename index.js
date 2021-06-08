@@ -91,3 +91,91 @@ app.delete('/pokedex/:id',
         res.send("Pokemon removido com sucesso");
     }
 );
+
+/*
+    Daqui pra baixo MongoDB
+*/
+
+const mongodb = require('mongodb')
+const password = process.env.PASSWORD || "asdf";
+console.log(password);
+
+const connectionString = `mongodb+srv://admin:${password}@cluster0.05d5a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const options = { useNewUrlParser: true, 
+                  useUnifiedTopology: true 
+                };
+(async()=>{
+    const client = await mongodb.MongoClient.connect(connectionString,options);
+    const db = client.db("myFirstDatabase");
+    const pokedex = db.collection('pokedex');
+    console.log(await pokedex.find({}).toArray());
+
+    app.get('/database',
+    async function(req, res){
+        res.send(await pokedex.find({}).toArray());
+    }
+    );
+
+    app.get('/database/:id',
+    async function(req, res){
+        const id = req.params.id;
+        const pokemon = await pokedex.findOne(
+            {_id : mongodb.ObjectID(id)}
+        );
+        console.log(pokemon);
+        if (!pokemon){
+            res.send("Pokemon não encontrado");
+        } else {
+            res.send(pokemon);
+        }
+    }
+);
+
+app.post('/database', 
+    async (req, res) => {
+        console.log(req.body);
+        const pokemon = req.body;
+        
+        delete pokemon["_id"];
+
+        pokedex.insertOne(pokemon);        
+        res.send("criar um Pokemon.");
+    }
+);
+
+app.put('/database/:id',
+    async (req, res) => {
+        const id = req.params.id;
+        const pokemon = req.body;
+
+        console.log(pokemon);
+
+        delete pokemon["_id"];
+
+        const num_pokedex = await pokedex.countDocuments({_id : mongodb.ObjectID(id)});
+
+        if (num_pokedex !== 1) {
+            res.send('Ocorreu um erro por conta do número de mensagens');
+            return;
+        }
+
+        await pokedex.updateOne(
+            {_id : mongodb.ObjectID(id)},
+            {$set : pokemon}
+        );
+        
+        res.send("Pokemon atualizada com sucesso.")
+    }
+)
+
+app.delete('/database/:id', 
+    async (req, res) => {
+        const id = req.params.id;
+        
+        await pokedex.deleteOne({_id : mongodb.ObjectID(id)});
+
+        res.send("Pokemon removido com sucesso");
+    }
+);
+
+})();
