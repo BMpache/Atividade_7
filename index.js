@@ -50,7 +50,7 @@ app.get('/pokedex',
     }
 );
 
-// arrumando os indeces do arry para facilitar interface para o usuario
+// arrumando os indeces do arry para facilitar interface para o usuariOOO
 app.get('/pokedex/:id',
     function(req, res){
         const id = req.params.id - 1;
@@ -164,7 +164,7 @@ app.put('/database/:id',
             {$set : pokemon}
         );
         
-        res.send("Pokemon atualizada com sucesso.")
+        res.send("Pokemon atualizada com sucesso.")  
     }
 )
 
