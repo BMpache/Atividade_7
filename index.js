@@ -50,7 +50,7 @@ app.get('/pokedex',
     }
 );
 
-// arrumando os indeces do arry para facilitar interface para o usuariOOO
+// arrumando os indeces do arry para facilitar interface para o usuariOO
 app.get('/pokedex/:id',
     function(req, res){
         const id = req.params.id - 1;
