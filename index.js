@@ -7,7 +7,7 @@ app.use(express.json()); //isso para garantir o tratamento do json
 var cors = require('cors');
 app.use(cors());
 
-// Porta que eu estou ouvindo, o primeiro  pro heroku e o segundo é pra usar no PC
+// Porta que eu estou ouvindo, o primeiro  pro heroku e o segundo é pra usar no Pc
 app.listen(process.env.PORT || 3000);
 
 
